@@ -4,6 +4,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: hsl(180, 31%, 95%);
+  font-size: 15px;
 }
 
 code {
