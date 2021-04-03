@@ -1,9 +1,9 @@
 import React from 'react'
 import styles from './Card.module.css'
 
-export default function Card({ children }) {
+export default function Card({ children, isFeatured }) {
   return (
-    <div className={ styles.card }>
+    <div className={` ${styles.card} ${isFeatured && styles.featured} `}>
       { children }
     </div>
   )

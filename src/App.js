@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="App">
       {jobs.map(job => (
-        <Card key={ job.id }>
+        <Card key={ job.id } isFeatured={ job.isFeatured }>
           <Job job={job} />
         </Card>
       ))}
