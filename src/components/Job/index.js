@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import RoundedChip from '../RoundedChip';
 import styles from "./Job.module.css"
 
 const Job = ({job}) => {
@@ -12,10 +13,10 @@ const Job = ({job}) => {
       <div className={ styles.details }>
         <img src={ logo } alt="photosnap"/>
         <div>
-          <div>
-            <span className={ styles.company }>{ company }</span>
-            <span>{ isNew && "NEW!" }</span>
-            <span>{ isFeatured && "FEATURED" }</span>
+          <div className={ styles.details_header }>
+            <div className={ styles.company }>{ company }</div>
+            { isNew && <RoundedChip label="NEW!" /> }
+            { isFeatured && <RoundedChip label="FEATURED" isDark /> }
           </div>
           <h3 className={ styles.position }>{ position }</h3>
           <div>
