@@ -48,3 +48,13 @@
   display: inline-block;
   margin-bottom: 2px;
 }
+
+/* FILTER */
+.filter {
+  display: flex;
+  align-items: center;
+}
+
+.filter > div {
+  margin-left: 1rem;
+}

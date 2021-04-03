@@ -1,0 +1,14 @@
+.container {
+  color: hsl(180, 29%, 50%);
+  background-color: hsl(180, 52%, 96%);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 10px 8px 8px 8px;
+  border-radius: 5px;
+}
+
+.container:hover {
+  color: #fff;
+  background-color: hsl(180, 29%, 50%);
+  cursor: pointer;
+}
