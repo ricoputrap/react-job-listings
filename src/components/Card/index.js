@@ -1,9 +1,9 @@
 import React from 'react'
-import './index.css'
+import styles from './Card.module.css'
 
 export default function Card({ children }) {
   return (
-    <div className="card">
+    <div className={ styles.card }>
       { children }
     </div>
   )

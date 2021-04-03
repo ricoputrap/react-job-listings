@@ -1,0 +1,24 @@
+.job {
+  display: flex;
+  justify-content: space-between;
+}
+
+.details {
+  display: flex;
+  align-items: center;
+}
+
+.details img {
+  margin-right: 1rem;
+}
+
+.company {
+  font-weight: 700;
+  color: hsl(180, 8%, 52%);
+  margin-right: 0.5rem;
+}
+
+.position {
+  font-weight: 700;
+  color: hsl(180, 14%, 20%);
+}
