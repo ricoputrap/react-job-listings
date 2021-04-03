@@ -17,6 +17,10 @@
   margin-right: 0.5rem;
 }
 
+.details_header > div:last-child {
+  margin-right: 0;
+}
+
 .company {
   font-weight: 700;
   color: hsl(180, 8%, 52%);
@@ -30,4 +34,17 @@
 .position:hover {
   color: hsl(180, 29%, 50%);
   cursor: pointer;
+}
+
+.details_footer > span {
+  margin-right: 1rem;
+}
+
+.dot {
+  background: hsl(180, 8%, 52%);
+  width: 3px;
+  border-radius: 50%;
+  height: 3px;
+  display: inline-block;
+  margin-bottom: 2px;
 }

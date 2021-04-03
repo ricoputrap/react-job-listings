@@ -19,21 +19,24 @@ const Job = ({job}) => {
             { isFeatured && <RoundedChip label="FEATURED" isDark /> }
           </div>
           <h3 className={ styles.position }>{ position }</h3>
-          <div>
+          <div className={ styles.details_footer }>
             <span>{ postedAt }</span>
+            <span className={ styles.dot }></span>
             <span>{ contract }</span>
+            <span className={ styles.dot }></span>
             <span>{ location }</span>
           </div>
         </div>
       </div>
       <div className="filter">
-        
+
       </div>
     </div>
   )
 }
 
 Job.propTypes = {
+  logo: PropTypes.string,
   company: PropTypes.string,
   isNew: PropTypes.bool,
   isFeatured: PropTypes.bool,
