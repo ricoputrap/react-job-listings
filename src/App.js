@@ -6,7 +6,7 @@ import Job from "./components/Job";
 
 function App() {
   const [jobs, setJobs] = useState([]);
-  useEffect(async () => {
+  useEffect(() => {
     fetch('data.json')
       .then(res => res.json())
       .then(res => {
