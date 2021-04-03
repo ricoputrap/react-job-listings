@@ -26,8 +26,8 @@ const Job = ({job}) => {
           </div>
         </div>
       </div>
-      <div className="tech">
-
+      <div className="filter">
+        
       </div>
     </div>
   )

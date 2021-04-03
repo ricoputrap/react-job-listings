@@ -26,3 +26,8 @@
   font-weight: 700;
   color: hsl(180, 14%, 20%);
 }
+
+.position:hover {
+  color: hsl(180, 29%, 50%);
+  cursor: pointer;
+}
