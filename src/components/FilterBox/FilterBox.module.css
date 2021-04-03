@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container > div {
+  display: flex;
+}
+
+.container > div > div {
+  margin-right: 1rem;
+}
+
+.container a {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: hsl(180, 29%, 50%);
+}

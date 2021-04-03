@@ -38,9 +38,9 @@ const Job = ({job}) => {
         <BoxChip label={ role } />
         <BoxChip label={ level } />
         { languages.length > 0 && 
-          languages.map(lang => <BoxChip label={ lang } />)}
+          languages.map(lang => <BoxChip label={ lang } key={ lang } />)}
         { tools.length > 0 &&
-          tools.map(tool => <BoxChip label={ tool } />)}
+          tools.map(tool => <BoxChip label={ tool } key={ tool } />)}
       </div>
     </div>
   )
