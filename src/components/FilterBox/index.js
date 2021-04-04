@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import styles from "./FilterBox.module.css"
 import DeleteableChip from '../DeletableChip'
+import { FilterContext } from "../../App"; 
 
-const FilterBox = ({ filters }) => {
+
+const FilterBox = () => {
+
+  const filterContext = useContext(FilterContext);
+  const filters = filterContext.filterState.filters;
   
   const onClear = e => {
     e.preventDefault();
@@ -12,9 +17,12 @@ const FilterBox = ({ filters }) => {
   return (
     <div className={ styles.container }>
       <div>
-        {filters.length > 0 && 
-        filters.map(filter => 
-          <DeleteableChip label={ filter } key={ filter } />
+        { filters.length > 0 && 
+          filters.map((filter, index) => 
+          <DeleteableChip 
+            key={ index }
+            index={ index }
+            label={ filter } />
         )}
       </div>
       
@@ -28,7 +36,7 @@ FilterBox.propTypes = {
 }
 
 FilterBox.defaultProps = {
-  filters: [],
+  filters: ["Frontend", "JS"],
 }
 
 export default FilterBox
