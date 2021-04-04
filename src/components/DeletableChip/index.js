@@ -1,17 +1,17 @@
 import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import styles from "./DeleteableChip.module.css";
-import { FilterContext } from "../../App"; 
+import { MainContext } from "../../App"; 
 
 const DeleteableChip = ({ label }) => {
-  const filterContext = useContext(FilterContext);
+  const context = useContext(MainContext);
 
   return (
     <div className={ styles.container }>
       <span className={ styles.label }>{ label }</span>
       <span 
         className={ styles.delete } 
-        onClick={() => filterContext.filterDispatch({
+        onClick={() => context.dispatch({
           type: "removeFilter",
           value: label
         })}>

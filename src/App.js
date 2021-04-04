@@ -7,10 +7,10 @@ import Job from "./components/Job";
 import initialState from "./state/initialState";
 import reducer from "./state/reducer";
 
-export const FilterContext = createContext();
+export const MainContext = createContext();
 
 const App = () => {
-  const [filters, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState);
   const [jobs, setJobs] = useState([]);
   useEffect(() => {
     fetch('data.json')
@@ -23,7 +23,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <FilterContext.Provider value={{ filterState: filters, filterDispatch: dispatch}}>
+      <MainContext.Provider value={{ state, dispatch}}>
         <Card>
           <FilterBox />
         </Card>
@@ -33,7 +33,7 @@ const App = () => {
             <Job job={job} />
           </Card>
         ))}
-      </FilterContext.Provider>
+      </MainContext.Provider>
     </div>
   );
 }

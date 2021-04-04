@@ -2,17 +2,17 @@ import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import styles from "./FilterBox.module.css"
 import DeleteableChip from '../DeletableChip'
-import { FilterContext } from "../../App"; 
+import { MainContext } from "../../App"; 
 
 
 const FilterBox = () => {
 
-  const filterContext = useContext(FilterContext);
-  const filters = filterContext.filterState.filters;
+  const context = useContext(MainContext);
+  const filters = context.state.filters;
   
   const onClear = e => {
     e.preventDefault();
-    filterContext.filterDispatch({ type: 'clearFilter' })
+    context.dispatch({ type: 'clearFilter' })
   }
 
   return (
@@ -29,14 +29,6 @@ const FilterBox = () => {
       <span className={ styles.link } onClick={onClear}>Clear</span>
     </div>
   )
-}
-
-FilterBox.propTypes = {
-  filters: PropTypes.array
-}
-
-FilterBox.defaultProps = {
-  filters: ["Frontend", "JS"],
 }
 
 export default FilterBox
