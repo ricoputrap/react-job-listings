@@ -4,35 +4,10 @@ import './App.css';
 import Card from './components/Card';
 import FilterBox from "./components/FilterBox";
 import Job from "./components/Job";
+import initialState from "./state/initialState";
+import reducer from "./state/reducer";
 
 export const FilterContext = createContext();
-const initialState = {
-  jobs: [],
-  filters: [],
-}
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'addFilter':
-      const currentFilters = state.filters;
-      const newFilter = action.value;
-
-      if (!currentFilters.includes(newFilter)) {
-        return {
-          ...state,
-          filters: [...state.filters, action.value]
-        }
-      }
-      return state;
-    case 'removeFilter':
-      return {
-        ...state,
-        filters: state.filters.filter(filter => filter !== action.value)
-      }
-    case 'clearFilter':
-      return initialState
-  }
-}
-
 
 const App = () => {
   const [filters, dispatch] = useReducer(reducer, initialState);
