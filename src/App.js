@@ -28,6 +28,8 @@ const reducer = (state, action) => {
         ...state,
         filters: state.filters.filter(filter => filter !== action.value)
       }
+    case 'clearFilter':
+      return initialState
   }
 }
 

@@ -12,6 +12,7 @@ const FilterBox = () => {
   
   const onClear = e => {
     e.preventDefault();
+    filterContext.filterDispatch({ type: 'clearFilter' })
   }
 
   return (
