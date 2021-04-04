@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import PropTypes from 'prop-types'
 import styles from "./FilterBox.module.css"
 import DeleteableChip from '../DeletableChip'
 import { MainContext } from "../../App"; 

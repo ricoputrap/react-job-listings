@@ -2,6 +2,12 @@ import initialState from "./initialState";
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case 'populateJobs':
+      return {
+        ...state,
+        jobs: action.value
+      }
+    
     case 'addFilter':
       const currentFilters = state.filters;
       const newFilter = action.value;
