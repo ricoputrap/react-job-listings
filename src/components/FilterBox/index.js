@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styles from "./FilterBox.module.css"
 import DeleteableChip from '../DeletableChip'
 
-const FilterBox = props => {
+const FilterBox = ({ filters }) => {
   
   const onClear = e => {
     e.preventDefault();
@@ -12,16 +12,23 @@ const FilterBox = props => {
   return (
     <div className={ styles.container }>
       <div>
-        <DeleteableChip label="Frontend" />
+        {filters.length > 0 && 
+        filters.map(filter => 
+          <DeleteableChip label={ filter } key={ filter } />
+        )}
       </div>
       
-      <a href="" onClick={onClear}>Clear</a>
+      <span className={ styles.link } onClick={onClear}>Clear</span>
     </div>
   )
 }
 
 FilterBox.propTypes = {
+  filters: PropTypes.array
+}
 
+FilterBox.defaultProps = {
+  filters: [],
 }
 
 export default FilterBox
