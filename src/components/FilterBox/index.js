@@ -21,7 +21,6 @@ const FilterBox = () => {
           filters.map((filter, index) => 
           <DeleteableChip 
             key={ index }
-            index={ index }
             label={ filter } />
         )}
       </div>

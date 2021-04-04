@@ -23,11 +23,11 @@ const reducer = (state, action) => {
         }
       }
       return state;
-    // case 'removeFilter':
-    //   return {
-    //     ...state,
-    //     filters: filters.splice(action.index, 1)
-    //   }
+    case 'removeFilter':
+      return {
+        ...state,
+        filters: state.filters.filter(filter => filter !== action.value)
+      }
   }
 }
 
