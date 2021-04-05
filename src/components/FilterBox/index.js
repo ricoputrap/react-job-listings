@@ -17,11 +17,31 @@ const FilterBox = () => {
   return (
     <div className={ styles.container }>
       <div>
-        { filters.length > 0 && 
-          filters.map((filter, index) => 
+        { filters.role && 
+          <DeleteableChip 
+            key={ filters.role } 
+            label={ filters.role }
+          />
+        }
+        { filters.level && 
+          <DeleteableChip 
+            key={ filters.level } 
+            label={ filters.level }
+          />
+        }
+        
+        { filters.languages.length > 0 && 
+          filters.languages.map((lang, index) => 
           <DeleteableChip 
             key={ index }
-            label={ filter } />
+            label={ lang } />
+        )}
+
+        { filters.tools.length > 0 && 
+          filters.tools.map((tool, index) => 
+          <DeleteableChip 
+            key={ index }
+            label={ tool } />
         )}
       </div>
       

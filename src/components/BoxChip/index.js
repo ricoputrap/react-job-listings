@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styles from "./BoxChip.module.css";
 import { MainContext } from "../../App"; 
 
-const BoxChip = ({ label }) => {
+const BoxChip = ({ label, type }) => {
   const context = useContext(MainContext);
 
   return (
@@ -11,7 +11,8 @@ const BoxChip = ({ label }) => {
       className={ styles.container }
       onClick={() => context.dispatch({
         type: "addFilter",
-        value: label
+        filterLabel: label,
+        filterType: type
       })}
     >
       { label }
@@ -20,7 +21,8 @@ const BoxChip = ({ label }) => {
 }
 
 BoxChip.propTypes = {
-  label: PropTypes.string
+  label: PropTypes.string,
+  type: PropTypes.string
 }
 
 export default BoxChip;
