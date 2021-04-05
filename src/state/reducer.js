@@ -10,14 +10,32 @@ const reducer = (state, action) => {
     
     case 'addFilter':
       const currentFilters = state.filters;
-      const newFilter = action.value;
+      const newFilterLabel = action.filterLabel;
+      const newFilterType = action.filterType;
 
-      if (!currentFilters.includes(newFilter)) {
+      if ((newFilterType === "role" || newFilterType === "level") && currentFilters[newFilterType] !== newFilterLabel) {
         return {
           ...state,
-          filters: [...state.filters, action.value]
+          filters: {
+            ...currentFilters,
+            [newFilterType]: newFilterLabel
+          }
         }
       }
+
+      else if (!currentFilters[newFilterType].includes(newFilterLabel)) {
+        return {
+          ...state,
+          filters: {
+            ...currentFilters,
+            [newFilterType]: [
+              ...currentFilters[newFilterType],
+              newFilterLabel
+            ]
+          }
+        }
+      }
+
       return state;
 
     case 'removeFilter':
