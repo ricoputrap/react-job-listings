@@ -1,9 +1,14 @@
+import { getFilteredJobs } from "../helperFunctions";
 import initialState from "./initialState";
 
 const reducer = (state, action) => {
   let currentFilters;
   let filterLabel;
   let filterType;
+  let updatedFilters;
+
+  let currentJobs;
+  let updatedJobs;
 
   switch (action.type) {
     case 'populateJobs':
@@ -13,30 +18,38 @@ const reducer = (state, action) => {
       }
     
     case 'addFilter':
+      currentJobs = state.jobs;
       currentFilters = state.filters;
       filterLabel = action.filterLabel;
       filterType = action.filterType;
 
       if ((filterType === "role" || filterType === "level") && currentFilters[filterType] !== filterLabel) {
+        updatedFilters = {
+          ...currentFilters,
+          [filterType]: filterLabel
+        }
+
+        updatedJobs = getFilteredJobs(currentJobs, updatedFilters);
+
         return {
-          ...state,
-          filters: {
-            ...currentFilters,
-            [filterType]: filterLabel
-          }
+          jobs: updatedJobs,
+          filters: updatedFilters
         }
       }
 
       else if (!currentFilters[filterType].includes(filterLabel)) {
+        updatedFilters = {
+          ...currentFilters,
+          [filterType]: [
+            ...currentFilters[filterType],
+            filterLabel
+          ]
+        }
+        updatedJobs = getFilteredJobs(currentJobs, updatedFilters);
+
         return {
-          ...state,
-          filters: {
-            ...currentFilters,
-            [filterType]: [
-              ...currentFilters[filterType],
-              filterLabel
-            ]
-          }
+          jobs: updatedJobs,
+          filters: updatedFilters
         }
       }
 
