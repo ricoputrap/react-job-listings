@@ -1,6 +1,10 @@
 import initialState from "./initialState";
 
 const reducer = (state, action) => {
+  let currentFilters;
+  let filterLabel;
+  let filterType;
+
   switch (action.type) {
     case 'populateJobs':
       return {
@@ -9,28 +13,28 @@ const reducer = (state, action) => {
       }
     
     case 'addFilter':
-      const currentFilters = state.filters;
-      const newFilterLabel = action.filterLabel;
-      const newFilterType = action.filterType;
+      currentFilters = state.filters;
+      filterLabel = action.filterLabel;
+      filterType = action.filterType;
 
-      if ((newFilterType === "role" || newFilterType === "level") && currentFilters[newFilterType] !== newFilterLabel) {
+      if ((filterType === "role" || filterType === "level") && currentFilters[filterType] !== filterLabel) {
         return {
           ...state,
           filters: {
             ...currentFilters,
-            [newFilterType]: newFilterLabel
+            [filterType]: filterLabel
           }
         }
       }
 
-      else if (!currentFilters[newFilterType].includes(newFilterLabel)) {
+      else if (!currentFilters[filterType].includes(filterLabel)) {
         return {
           ...state,
           filters: {
             ...currentFilters,
-            [newFilterType]: [
-              ...currentFilters[newFilterType],
-              newFilterLabel
+            [filterType]: [
+              ...currentFilters[filterType],
+              filterLabel
             ]
           }
         }
@@ -39,13 +43,35 @@ const reducer = (state, action) => {
       return state;
 
     case 'removeFilter':
+      currentFilters = state.filters;
+      filterType = action.filterType;
+
+      if (filterType === "role" || filterType === "level") {
+        return {
+          ...state,
+          filters: {
+            ...currentFilters,
+            [filterType]: ""
+          }
+        }
+      }
+
+      filterLabel = action.filterLabel;
       return {
         ...state,
-        filters: state.filters.filter(filter => filter !== action.value)
+        filters: {
+          ...currentFilters,
+          [filterType]: currentFilters[filterType].filter(label => label !== filterLabel)
+        }
       }
 
     case 'clearFilter':
-      return initialState
+      currentFilters = state.filters;
+
+      return {
+        ...state,
+        filters: initialState.filters
+      }
 
     default:
       return state

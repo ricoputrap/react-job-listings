@@ -21,12 +21,14 @@ const FilterBox = () => {
           <DeleteableChip 
             key={ filters.role } 
             label={ filters.role }
+            type="role"
           />
         }
         { filters.level && 
           <DeleteableChip 
             key={ filters.level } 
             label={ filters.level }
+            type="level"
           />
         }
         
@@ -34,14 +36,18 @@ const FilterBox = () => {
           filters.languages.map((lang, index) => 
           <DeleteableChip 
             key={ index }
-            label={ lang } />
+            label={ lang } 
+            type="languages"
+          />
         )}
 
         { filters.tools.length > 0 && 
           filters.tools.map((tool, index) => 
           <DeleteableChip 
             key={ index }
-            label={ tool } />
+            label={ tool } 
+            type="tools"
+          />
         )}
       </div>
       
