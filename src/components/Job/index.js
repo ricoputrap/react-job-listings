@@ -35,13 +35,12 @@ const Job = ({job}) => {
       </div>
 
       <div className={ styles.filter }>
-        <BoxChip label={ role } type="role" />
-        <BoxChip label={ level } type="level" />
+        <BoxChip label={ role } />
+        <BoxChip label={ level } />
         { languages.length > 0 && 
           languages.map(lang => 
           <BoxChip 
             label={ lang }
-            type="languages"
             key={ lang } 
           />
         )}
@@ -49,7 +48,6 @@ const Job = ({job}) => {
           tools.map(tool => 
           <BoxChip 
             label={ tool } 
-            type="tools" 
             key={ tool }
           />
         )}

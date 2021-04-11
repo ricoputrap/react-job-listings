@@ -17,38 +17,13 @@ const FilterBox = () => {
   return (
     <div className={ styles.container }>
       <div>
-        { filters.role && 
-          <DeleteableChip 
-            key={ filters.role } 
-            label={ filters.role }
-            type="role"
-          />
-        }
-        { filters.level && 
-          <DeleteableChip 
-            key={ filters.level } 
-            label={ filters.level }
-            type="level"
-          />
-        }
-        
-        { filters.languages.length > 0 && 
-          filters.languages.map((lang, index) => 
-          <DeleteableChip 
-            key={ index }
-            label={ lang } 
-            type="languages"
-          />
-        )}
-
-        { filters.tools.length > 0 && 
-          filters.tools.map((tool, index) => 
-          <DeleteableChip 
-            key={ index }
-            label={ tool } 
-            type="tools"
-          />
-        )}
+        { filters.length > 0 &&
+          filters.map((filter, index) => {
+            <DeleteableChip 
+              key={ index }
+              label={ filter }
+            />
+        })}
       </div>
       
       <span className={ styles.link } onClick={onClear}>Clear</span>

@@ -1,4 +1,21 @@
+
+export const getJobTags = ({ role, level, languages, tools }) => {
+  let tags = [];
+  role && tags.push(role);
+  level && tags.push(level);
+  languages.length > 0 && languages.forEach(lang => tags.push(lang));
+  tools.length > 0 && tools.forEach(tool => tags.push(tool));
+  console.log('tags:', tags)
+  return tags;
+}
+
 export const getFilteredJobs = (jobs, filters) => {
+  return jobs.filter(job => {
+    return filters.every(filter => getJobTags(job).includes(filter));
+  })
+}
+
+export const getFilteredJobs2 = (jobs, filters) => {
   const hasRoleFilter = filters.role !== "";
   const hasLevelFilter = filters.level !== "";
   const hasLanguagesFilter = filters.languages.length > 0;

@@ -16,44 +16,57 @@ const reducer = (state, action) => {
         ...state,
         jobs: action.value
       }
-    
+
     case 'addFilter':
       currentJobs = state.jobs;
       currentFilters = state.filters;
-      filterLabel = action.filterLabel;
-      filterType = action.filterType;
+      updatedFilters = [...currentFilters, action.value];
 
-      if ((filterType === "role" || filterType === "level") && currentFilters[filterType] !== filterLabel) {
-        updatedFilters = {
-          ...currentFilters,
-          [filterType]: filterLabel
-        }
+      updatedJobs = getFilteredJobs(currentJobs, updatedFilters);
 
-        updatedJobs = getFilteredJobs(currentJobs, updatedFilters);
-
-        return {
-          jobs: updatedJobs,
-          filters: updatedFilters
-        }
+      return {
+        jobs: updatedJobs,
+        filters: updatedFilters
       }
+      
+    
+    // case 'addFilter':
+    //   currentJobs = state.jobs;
+    //   currentFilters = state.filters;
+    //   filterLabel = action.filterLabel;
+    //   filterType = action.filterType;
 
-      else if (!currentFilters[filterType].includes(filterLabel)) {
-        updatedFilters = {
-          ...currentFilters,
-          [filterType]: [
-            ...currentFilters[filterType],
-            filterLabel
-          ]
-        }
-        updatedJobs = getFilteredJobs(currentJobs, updatedFilters);
+    //   if ((filterType === "role" || filterType === "level") && currentFilters[filterType] !== filterLabel) {
+    //     updatedFilters = {
+    //       ...currentFilters,
+    //       [filterType]: filterLabel
+    //     }
 
-        return {
-          jobs: updatedJobs,
-          filters: updatedFilters
-        }
-      }
+    //     updatedJobs = getFilteredJobs(currentJobs, updatedFilters);
 
-      return state;
+    //     return {
+    //       jobs: updatedJobs,
+    //       filters: updatedFilters
+    //     }
+    //   }
+
+    //   else if (!currentFilters[filterType].includes(filterLabel)) {
+    //     updatedFilters = {
+    //       ...currentFilters,
+    //       [filterType]: [
+    //         ...currentFilters[filterType],
+    //         filterLabel
+    //       ]
+    //     }
+    //     updatedJobs = getFilteredJobs(currentJobs, updatedFilters);
+
+    //     return {
+    //       jobs: updatedJobs,
+    //       filters: updatedFilters
+    //     }
+    //   }
+
+    //   return state;
 
     case 'removeFilter':
       currentFilters = state.filters;

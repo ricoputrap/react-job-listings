@@ -1,11 +1,6 @@
 const initialState = {
   jobs: [],
-  filters: {
-    role: "",
-    level: "",
-    languages: [],
-    tools: [],
-  },
+  filters: [],
 }
 
 export default initialState;
