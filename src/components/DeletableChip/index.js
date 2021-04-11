@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styles from "./DeleteableChip.module.css";
 import { MainContext } from "../../App"; 
 
-const DeleteableChip = ({ label, type }) => {
+const DeleteableChip = ({ label, index }) => {
   const context = useContext(MainContext);
 
   return (
@@ -13,8 +13,7 @@ const DeleteableChip = ({ label, type }) => {
         className={ styles.delete } 
         onClick={() => context.dispatch({
           type: "removeFilter",
-          filterLabel: label,
-          filterType: type
+          value: index,
         })}>
         <img src="images/icon-remove.svg" alt="remove" />
       </span>
@@ -24,7 +23,6 @@ const DeleteableChip = ({ label, type }) => {
 
 DeleteableChip.propTypes = {
   label: PropTypes.string,
-  type: PropTypes.string
 }
 
 export default DeleteableChip;

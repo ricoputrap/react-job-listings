@@ -18,12 +18,13 @@ const FilterBox = () => {
     <div className={ styles.container }>
       <div>
         { filters.length > 0 &&
-          filters.map((filter, index) => {
+          filters.map((tag, index) => 
             <DeleteableChip 
               key={ index }
-              label={ filter }
+              label={ tag }
+              index={ index }
             />
-        })}
+        )}
       </div>
       
       <span className={ styles.link } onClick={onClear}>Clear</span>

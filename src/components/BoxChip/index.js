@@ -13,11 +13,6 @@ const BoxChip = ({ label }) => {
         type: "addFilter",
         value: label
       })}
-      // onClick={() => context.dispatch({
-      //   type: "addFilter",
-      //   filterLabel: label,
-      //   filterType: type
-      // })}
     >
       { label }
     </div>
@@ -26,7 +21,6 @@ const BoxChip = ({ label }) => {
 
 BoxChip.propTypes = {
   label: PropTypes.string,
-  type: PropTypes.string
 }
 
 export default BoxChip;
