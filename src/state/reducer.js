@@ -51,7 +51,7 @@ const reducer = (state, action) => {
       currentFilters = state.filters;
 
       return {
-        ...state,
+        jobs: allJobs,
         filters: initialState.filters
       }
 
