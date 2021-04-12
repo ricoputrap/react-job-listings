@@ -1,20 +1,23 @@
 import { getFilteredJobs } from "../helperFunctions";
 import initialState from "./initialState";
 
+let allJobs;
+
 const reducer = (state, action) => {
   let currentFilters;
-  let filterLabel;
-  let filterType;
   let updatedFilters;
 
+  
   let currentJobs;
   let updatedJobs;
 
   switch (action.type) {
     case 'populateJobs':
+      allJobs = action.value;
+
       return {
         ...state,
-        jobs: action.value
+        jobs: allJobs
       }
 
     case 'addFilter':
@@ -29,67 +32,20 @@ const reducer = (state, action) => {
         filters: updatedFilters
       }
       
-    
-    // case 'addFilter':
-    //   currentJobs = state.jobs;
-    //   currentFilters = state.filters;
-    //   filterLabel = action.filterLabel;
-    //   filterType = action.filterType;
-
-    //   if ((filterType === "role" || filterType === "level") && currentFilters[filterType] !== filterLabel) {
-    //     updatedFilters = {
-    //       ...currentFilters,
-    //       [filterType]: filterLabel
-    //     }
-
-    //     updatedJobs = getFilteredJobs(currentJobs, updatedFilters);
-
-    //     return {
-    //       jobs: updatedJobs,
-    //       filters: updatedFilters
-    //     }
-    //   }
-
-    //   else if (!currentFilters[filterType].includes(filterLabel)) {
-    //     updatedFilters = {
-    //       ...currentFilters,
-    //       [filterType]: [
-    //         ...currentFilters[filterType],
-    //         filterLabel
-    //       ]
-    //     }
-    //     updatedJobs = getFilteredJobs(currentJobs, updatedFilters);
-
-    //     return {
-    //       jobs: updatedJobs,
-    //       filters: updatedFilters
-    //     }
-    //   }
-
-    //   return state;
 
     case 'removeFilter':
+      currentJobs = state.jobs;  
       currentFilters = state.filters;
-      filterType = action.filterType;
 
-      if (filterType === "role" || filterType === "level") {
-        return {
-          ...state,
-          filters: {
-            ...currentFilters,
-            [filterType]: ""
-          }
-        }
-      }
+      updatedFilters = Array.from(currentFilters);
+      updatedFilters.splice(action.value, 1);
 
-      filterLabel = action.filterLabel;
+      updatedJobs = getFilteredJobs(allJobs, updatedFilters);
+
       return {
-        ...state,
-        filters: {
-          ...currentFilters,
-          [filterType]: currentFilters[filterType].filter(label => label !== filterLabel)
-        }
-      }
+        jobs: updatedJobs,
+        filters: updatedFilters
+      };
 
     case 'clearFilter':
       currentFilters = state.filters;

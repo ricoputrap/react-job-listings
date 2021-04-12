@@ -9,7 +9,10 @@ export const getJobTags = ({ role, level, languages, tools }) => {
 }
 
 export const getFilteredJobs = (jobs, filters) => {
-  return jobs.filter(job => {
-    return filters.every(filter => getJobTags(job).includes(filter));
-  })
+  if (filters.length > 0) {
+    return jobs.filter(job => {
+      return filters.every(filter => getJobTags(job).includes(filter));
+    })
+  }
+  return jobs;
 }
