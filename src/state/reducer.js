@@ -23,7 +23,12 @@ const reducer = (state, action) => {
     case 'addFilter':
       currentJobs = state.jobs;
       currentFilters = state.filters;
-      updatedFilters = [...currentFilters, action.value];
+      const newFilter = action.value;
+
+      if (currentFilters.includes(newFilter))
+        return state;
+
+      updatedFilters = [...currentFilters, newFilter];
 
       updatedJobs = getFilteredJobs(currentJobs, updatedFilters);
 
